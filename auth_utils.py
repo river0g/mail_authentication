@@ -46,4 +46,5 @@ class AuthJwt():
 
 
 if __name__ == '__main__':
-    print('hi')
+    auth = AuthJwt()
+    auth.generate_hashed_pw('jisoo')

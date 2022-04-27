@@ -12,10 +12,10 @@
 
 ## ルーティング
 
-- /signup/
-- /login/
-- /auth/
-- /main/
+- /signup/, methods=['GET']
+- /login/, methods=['GET', 'POST']
+- /auth/, methods=['GET', 'POST']
+- /main/, methods=['GET']
 
 ## ファイル構成
 
@@ -44,12 +44,30 @@ signup にはメールアドレスとパスワードを入力してもらう。 
 - Flask を用いた webapplication, website を作ることもしない。
 - Flask には側の役割だけしてもらう。
 
+## ローカルでの使い方。
+
+mongodb の登録と gmail の 2 段階認証をオンにしてアプリパスワードを発行するところまで終わっていると想定
+
+1. clone する
+2. `python3 -m venv [環境変数名]`
+3. `source [環境変数名]/bin/activate`
+4. `pip install -r requirements.txt`
+5. `.env`に下の「.env に書いてあること」を参考に mongodb_uri, gmail, その app pass を記入
+6. `python3 main.py`
+7. http://localhost:5000/signup にアクセス
+8. *自分の*メールアドレスとテキトーなユーザーネームとパスワード入れる。メアドに認証番号が届く。
+9. それ打っておわり。
+
 ### .env に書いてあること
 
 MONGO_DB_URI -> MongoBD に接続するための URI
+MAIL_ADDRESS -> 送信元のメールアドレス。
+MAIL_PASSWORD -> 送信元のメールアドレスのアプリパスワード(gmail 想定)
 
 ## todo
 
 - 値の管理をクッキーでする。
 - コードの整理
 - ログイン、ログアウトの実装(多分やらない)
+- 新規作成時に認証をやらなかった時に tmp_account を消す処理を追加
+- ログイン時にパスワードを忘れた時の処理(username に紐づけられているメアドにパスワード送信。)(たぶんやらない)

@@ -1,76 +1,60 @@
 {% extends 'base.html' %} {%block title%}
 <title>Signup</title>
 {%endblock%} {%block head%}
-<link
-  rel="canonical"
-  href="https://getbootstrap.jp/docs/5.0/examples/sign-in/"
-/>
-
-<style>
-  .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
-
-  @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-      font-size: 3.5rem;
-    }
-  }
-</style>
-
 <!-- Custom styles for this template -->
 <link href="{{url_for('static', filename='style.css')}}" rel="stylesheet" />
-{% endblock %} {% block main %} {% if message %}
-<div class="text-center">
-  <span class="text-danger">{{ message }}</span>
-</div>
-{% endif %}
-<main class="form-signin">
-  <form action="/auth" method="POST" enctype="multipart/form-data">
-    <h1 class="h3 mb-3 fw-normal text-center">Please Signup</h1>
-    <div class="form-floating">
-      <input
-        type="text"
-        class="form-control"
-        id="floatingInput"
-        placeholder="Email Address"
-        name="email"
-        required
-      />
-      <label for="floatingInput">Email</label>
-    </div>
-    <div class="form-floating">
-      <input
-        type="username"
-        class="form-control"
-        id="floatingInput"
-        placeholder="Username"
-        name="username"
-        required
-      />
-      <label for="floatingInput">Username</label>
-    </div>
-    <div class="form-floating">
-      <input
-        type="password"
-        class="form-control"
-        id="floatingPassword"
-        placeholder="Password"
-        name="password"
-        required
-      />
-      <label for="floatingPassword">Password</label>
-    </div>
-    <input type="hidden" name="this-page" value="signup" />
+{% endblock %} {% block main %}
+<div class="container">
+  {% if message %}
+  <div class="text-center">
+    <span class="text-danger">{{ message }}</span>
+  </div>
+  {% endif %}
+  <main class="form-signin">
+    <form action="/auth" method="POST" enctype="multipart/form-data">
+      <h1 class="h3 mb-3 fw-normal text-center">Please Signup</h1>
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Email Address"
+          name="email"
+          required
+        />
+        <label for="floatingInput">Email</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="username"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Username"
+          name="username"
+          required
+        />
+        <label for="floatingInput">Username</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Password"
+          name="password"
+          required
+        />
+        <label for="floatingPassword">Password</label>
+      </div>
+      <input type="hidden" name="this-page" value="signup" />
 
-    <div class="mb-3 text-center">
-      <a href="{{ url_for('login') }}">Go to Login Page</a>
-    </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-  </form>
-</main>
+      <div class="mb-3 text-center">
+        <a href="{{ url_for('login') }}">Go to Login Page</a>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">
+        Sign in
+      </button>
+    </form>
+  </main>
+</div>
 {% endblock %}

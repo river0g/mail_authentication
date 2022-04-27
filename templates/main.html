@@ -1,3 +1,27 @@
-<html>
-  hello
-</html>
+{% extends 'base.html' %} {%block title%}
+<title>Main</title>
+{%endblock%} {% block main %}
+<div class="container">
+  <div class="center-block text-center py-100">
+    <div class="card center-block pt-100">
+      <div class="card-body">
+        <h1 class="card-title">Main Page</h1>
+        <h6 class="card-subtitle mb-2 text-muted">
+          {% if req_page == "signup" %} Signup and Login Success!! {% else %}
+          Login Success!! {% endif %}
+        </h6>
+        {% if data %}
+        <p class="card-text">
+          UserName: {{data.username}}<br />EmailAddress: {{data.email}}
+        </p>
+        <a href="{{ url_for('home') }}" class="card-link">Home</a>
+        <a href="{{ url_for('sign_up')}}" class="card-link"
+          >Create New Account</a
+        >
+        <a href="{{ url_for('login')}}" class="card-link">Signin Page</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

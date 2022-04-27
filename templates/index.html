@@ -1,6 +1,10 @@
 {% extends 'base.html' %} {% block title %}
 <title>index</title>
 {% endblock %} {% block main %}
-<h1>this page is index.html</h1>
-<h2>{{username}}</h2>
+<div class="container">
+  <h1>Welcome to My Page made of Flask</h1>
+  <h2>Hello! {{username}}</h2>
+  <a href="{{ url_for('login') }}">Login</a> <br />
+  <a href="{{ url_for('sign_up')}}">Create New Account</a>
+</div>
 {% endblock %}
