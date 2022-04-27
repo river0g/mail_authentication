@@ -5,28 +5,35 @@
 <!-- Custom styles for this template -->
 <link href="{{url_for('static', filename='style.css')}}" rel="stylesheet" />
 {% endblock %} {% block main %}
-<main class="form-signin">
-  <form action="/main" method="POST" enctype="multipart/form-data">
-    <h1 class="h3 mb-3 fw-normal text-center">Please Input Verify Code</h1>
+<div class="container">
+  {% if message %}
+  <div class="text-center">
+    <span class="text-danger">{{ message }}</span>
+  </div>
+  {% endif %}
+  <main class="form-signin">
+    <form action="/main" method="POST" enctype="multipart/form-data">
+      <h1 class="h3 mb-3 fw-normal text-center">Please Input Verify Code</h1>
 
-    <div class="form-floating">
-      <input
-        type="text"
-        class="form-control"
-        id="floatingInput"
-        placeholder="Verify"
-        name="verify"
-        required
-      />
-      <label for="floatingInput">Verify Code</label>
-    </div>
-    <input type="hidden" name="this-page" value="auth" />
-    <input type="hidden" name="username" value="{{ username }}" />
-    {% if req_page %}
-    <input type="hidden" name="req-page" value="{{ req_page }}" />
-    {% endif %}
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Verify"
+          name="verify"
+          required
+        />
+        <label for="floatingInput">Verify Code</label>
+      </div>
+      <input type="hidden" name="this-page" value="auth" />
+      <input type="hidden" name="username" value="{{ username }}" />
+      {% if req_page %}
+      <input type="hidden" name="req-page" value="{{ req_page }}" />
+      {% endif %}
 
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Verify</button>
-  </form>
-</main>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Verify</button>
+    </form>
+  </main>
+</div>
 {% endblock %}

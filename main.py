@@ -99,7 +99,7 @@ async def auth_page():
         password = request.form.get('password')
         print(username, password)
 
-        exp = datetime.utcnow() + timedelta(days=0, minutes=5)  # 間接的にverify_codeの有効時間になる。
+        exp = datetime.utcnow() + timedelta(days=0, minutes=1)  # 間接的にverify_codeの有効時間になる。
         iat = datetime.utcnow()
         code = auth.generate_verify_code()
 
