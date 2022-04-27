@@ -13,9 +13,8 @@
 ## ルーティング
 
 - /signup/
-- /auth/
 - /login/
-- /logout/
+- /auth/
 - /main/
 
 ## ファイル構成
@@ -24,7 +23,8 @@
 - `send_mail.py`
 - `database.py`
 - `auth_utils.py`
-- `something.html`
+- `templates/*.html`
+- `static/*.css`
 
 ## 内容
 
@@ -47,3 +47,9 @@ signup にはメールアドレスとパスワードを入力してもらう。 
 ### .env に書いてあること
 
 MONGO_DB_URI -> MongoBD に接続するための URI
+
+## todo
+
+- 値の管理をクッキーでする。
+- コードの整理
+- ログイン、ログアウトの実装(多分やらない)

@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {%block title%}
+<title>Auth</title>
+{%endblock%} {%block head%}
+<link
+  rel="canonical"
+  href="https://getbootstrap.jp/docs/5.0/examples/sign-in/"
+/>
+
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+</style>
+
+<!-- Custom styles for this template -->
+<link href="{{url_for('static', filename='style.css')}}" rel="stylesheet" />
+{% endblock %} {% block main %}
+<main class="form-signin">
+  <form action="/main" method="POST" enctype="multipart/form-data">
+    <h1 class="h3 mb-3 fw-normal text-center">Please Input Verify Code</h1>
+
+    <div class="form-floating">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder="Verify"
+        name="verify"
+        required
+      />
+      <label for="floatingInput">Verify Code</label>
+    </div>
+    <input type="hidden" name="this-page" value="auth" />
+    <input type="hidden" name="username" value="{{ username }}" />
+    {% if req_page %}
+    <input type="hidden" name="req-page" value="{{ req_page }}" />
+    {% endif %}
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Verify</button>
+  </form>
+</main>
+{% endblock %}
